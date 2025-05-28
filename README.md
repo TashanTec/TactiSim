@@ -29,7 +29,7 @@
         python -m mujoco.viewer --mjcf=./mujoco/mujoco_model/TS-F-A.xml
         ```
 
-        这将启动 MuJoCo 观察器，您可以在其中查看通用触觉传感器模组的模型，观察其外观和内部结构。
+        这将启动 MuJoCo 观察器，您可以在其中查看通用触觉传感器模组的模型，观察其外观和内部结构。<br>
 ![通用模组](mujoco/sensor_data/assets/ts-f-a.png)
 
 
@@ -38,7 +38,7 @@
         python -m mujoco.viewer --mjcf=./mujoco/mujoco_model/DexHand.xml
         ```
 
-        这将启动 MuJoCo 观察器，显示带触觉的灵巧手模型，您可以观察及控制其各个关节运动和触觉传感器的布局。
+        这将启动 MuJoCo 观察器，显示带触觉的灵巧手模型，您可以观察及控制其各个关节运动和触觉传感器的布局。<br>
 ![带触觉的灵巧手模型](mujoco/sensor_data/assets/dexhand.png)
 
 2. 调用传感器回调函数:<br>
