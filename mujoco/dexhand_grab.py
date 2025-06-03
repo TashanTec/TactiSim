@@ -107,9 +107,6 @@ def mujoco_viewer():
 
             frame += 1
             if frame == 5000:
-
-
-                
                 break
 
 if __name__ == "__main__":
