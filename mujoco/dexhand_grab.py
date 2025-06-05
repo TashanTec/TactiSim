@@ -9,13 +9,13 @@ from mjcb_sensor.linux import TSensor
 TSensor.register_sensor_callback()      # 注册回调
 
 # 目标位置关节角度
-target_qpos = np.array([0.519,0.692,0.545,  0.662,0.946,0.793,  0.743,0.991,0.84,  0.679,0.905,0.751,  0.403,0.896,0.742])
+target_qpos = np.array([0.514,0.686,0.539,  0.664,0.948,0.795,  0.748,0.997,0.847,  0.687,0.916,0.762,  0.416,0.924,0.77])
 current_qpos = np.zeros((15,))
 
 # 参数配置
 step_ratio = 0.01
 max_iterations = 1000
-tolerance = 0.01          # 允许的位置误差
+tolerance = 0.001          # 允许的位置误差
 
 def set_ctrl(name, value):
     id = mujoco.mj_name2id(Model, mujoco.mjtObj.mjOBJ_ACTUATOR, name)
@@ -47,7 +47,7 @@ def process(frame):
     global ConcateFlag
 
     if  frame == 10:
-        set_ctrl("mot_joint1", 0.02)
+        set_ctrl("mot_joint1", 0.05)
         set_ctrl("mot_joint2", -1.5708-0.28)
         set_ctrl("mot_joint5", 0.28)
         set_ctrl("mot_joint6", 1.5708)
