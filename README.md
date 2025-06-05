@@ -29,7 +29,7 @@
         python -m mujoco.viewer --mjcf=./mujoco/mujoco_model/TS-F-A.xml
         ```
 
-        这将启动 MuJoCo 观察器，您可以在其中查看通用触觉传感器模组的模型，观察其外观和内部结构。<br>
+        这将启动 MuJoCo 观察器，您可以在其中查看通用触觉传感器模组的模型，观察其外观。<br>
 ![通用模组](mujoco/sensor_data/assets/ts-f-a.png)
 
 
