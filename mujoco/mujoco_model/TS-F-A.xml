@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="ts_f_a">
+    <compiler angle="radian" meshdir="meshes"/>
+    <option gravity="0 0 -9.81" iterations="100" solver="Newton" integrator="implicit" timestep="0.001" cone="elliptic" impratio="100"/>
+
+    <visual>
+        <global offwidth="1920" offheight="1080"/>
+        <headlight ambient="0.50 0.50 0.50" diffuse="0.50 0.50 0.50" specular="0.50 0.50 0.50"/>
+    </visual>
+
+    <default>
+        <geom condim="3" solref="0.01 0.9" solimp="0.9 0.999 0.005" friction="1 0.1 0.01"/>
+    </default>
+
+    <asset>
+        <mesh name="l_f_link2_4" file="l_f_link2_4.STL"/>
+
+        <mesh name="f1" file="F1b.stl" scale=".001 .001 .001"/>
+        <mesh name="f2" file="F2b.stl" scale=".001 .001 .001"/>
+        <mesh name="f3" file="F3b.stl" scale=".001 .001 .001"/>
+        <mesh name="f4" file="F4b.stl" scale=".001 .001 .001"/>
+        <mesh name="f5" file="F5b.stl" scale=".001 .001 .001"/>
+        <mesh name="f6" file="F6b.stl" scale=".001 .001 .001"/>
+        <mesh name="f7" file="F7b.stl" scale=".001 .001 .001"/>
+
+        <texture name="grid" type="2d" builtin="checker" width="512" height="512" rgb1=".1 .2 .3" rgb2=".2 .3 .4"/>
+        <material name="grid" texture="grid" texrepeat="8 8" texuniform="true" reflectance=".2"/>
+    </asset>
+
+    <worldbody>
+        <geom type="plane" size=".1 .1 .01" material="grid"/>
+        <body name="tip_link" pos="0 0 0.01" quat="0.6903 0.6903 -0.1530 0.1530">
+            <inertial pos="0.0165327 -0.00269728 0.000649365" quat="0.616193 0.478635 0.507867 0.365085" mass="0.0076892" diaginertia="9.75666e-07 9.11773e-07 3.80946e-07"/>
+            <geom name="tip_link"  type="mesh" rgba="0.3 0.3 0.3 1" mesh="l_f_link2_4"/>
+            <body pos="0.0425 -0.0188 -0.0055" quat="0.69101 -0.15003 -0.69101 -0.15003">
+                <body name="force1_f1" pos="0 0 0.02">
+                    <geom type="mesh"  rgba="1 0.3 0.3 1" mesh="f1"/>
+                </body>
+                <body name="force1_f2" pos="0 0 0.0192">
+                    <geom type="mesh"  rgba="1 0.3 0.3 1" mesh="f2"/>
+                </body>
+                <body name="force1_f3" pos="0.00545 0 0.02">
+                    <geom type="mesh"  rgba="1 0.3 0.3 1" mesh="f3"/>
+                </body>
+                <body name="force1_f4" pos="0 0 0.02465">
+                    <geom type="mesh"  rgba="1 0.3 0.3 1" mesh="f4"/>
+                </body>
+                <body name="force1_f5" pos="-0.0001 0 0.0285">
+                    <geom type="mesh"  rgba="1 0.3 0.3 1" mesh="f5"/>
+                </body>
+                <body name="force1_f6" pos="0.0055 0 0.0285">
+                    <geom type="mesh"  rgba="1 0.3 0.3 1" mesh="f6"/>
+                </body>
+                <body name="force1_f7" pos="0 0 0.01362">
+                    <geom type="mesh"  rgba="1 0.3 0.3 1" mesh="f7"/>
+                </body>
+            </body>
+
+            <geom size="0.002" pos="0.02 0 0" rgba="1 0 0 1"/>
+            <site name="rf" pos="0.0143 0.006 0" size="0.0002" type="sphere" zaxis="0.46 1 0" rgba="1 0 0 1"/>
+        </body>
+
+        <body name="box" pos="0.021  0 .04">
+            <joint type="slide" axis="0 0 1"/>
+            <geom name="up_geom" type="box" size=".015 .005 .0025" mass="0.4" rgba="0.8 0 0 1" quat="1 0 0 0"/>
+        </body>
+    </worldbody>
+
+    <sensor>
+        <!-- 设置1个 TS-F-A 模组 -->
+        <rangefinder name="rf1" site="rf" cutoff="0.1"/>
+
+        <user name="TS-F-A-1" dim="11"/>
+    </sensor>
+</mujoco>
